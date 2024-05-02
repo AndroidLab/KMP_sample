@@ -1,0 +1,41 @@
+[versions]
+agp = "8.2.2"
+androidCompileSdk = "34"
+androidMinSdk = "24"
+androidTargetSdk = "34"
+composePlugin = "1.6.2"
+kotlin = "1.9.23"
+koin = "3.5.6"
+ktor = "2.3.10"
+
+[libraries]
+androidxCoreKtx = { group = "androidx.core", name = "core-ktx", version = "1.13.1" }
+androidxEspresso-core = { group = "androidx.test.espresso", name = "espresso-core", version = "3.5.1" }
+androidxAppcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.6.1" }
+androidxMaterial = { group = "com.google.android.material", name = "material", version = "1.11.0" }
+androidxConstraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.1.4" }
+androidxActivityCompose = { module = "androidx.activity:activity-compose", version = "1.9.0" }
+composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version = "1.6.7" }
+composeUiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version = "1.6.7" }
+kamelImage = { module = "media.kamel:kamel-image", version = "0.6.0" }
+koinCore = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koinCoreCoroutines = { module = "io.insert-koin:koin-core-coroutines", version.ref = "koin" }
+koinCompose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
+ktorfitLib = { module = "de.jensklingenberg.ktorfit:ktorfit-lib", version = "2.0.0-beta1" }
+mvvmCompose = { module = "dev.icerock.moko:mvvm-compose", version = "0.16.1" }
+mvvmCore = { module = "dev.icerock.moko:mvvm-core", version = "0.16.1" }
+ktorSerializationKotlinxJson = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktorClientSerialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
+ktorClientContentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.6.0" }
+kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.8.1-Beta" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "composePlugin" }
+devtoolsKsp = { id = "com.google.devtools.ksp", version = "1.9.23-1.0.20" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+pluginSerialization = { id = "plugin.serialization", version = "1.8.21" }
+jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version = "1.9.0" }
+jensklingenbergKtorfit = { id = "de.jensklingenberg.ktorfit", version = "2.0.0-beta1" }
