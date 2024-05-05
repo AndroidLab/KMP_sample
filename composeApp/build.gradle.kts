@@ -55,6 +55,8 @@ kotlin {
             implementation(libs.koinCore)
             //api(libs.koinCompose)  //Что то не работает
             implementation(libs.koinCoreCoroutines)
+            implementation(libs.odyssey.core)
+            implementation(libs.odyssey.compose)
         }
         androidMain.dependencies {
             implementation(libs.composeUiToolingPreview)
@@ -113,7 +115,7 @@ android {
 compose.desktop {
     application {
         mainClass = "MainKt"
-
+        javaHome = System.getenv("JAVA_HOME")
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "org.example.project"

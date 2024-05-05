@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -30,6 +32,8 @@ import dev.icerock.moko.mvvm.compose.viewModelFactory
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import main_screen.data.models.BirdModel
+import ru.alexgladkov.odyssey.compose.extensions.push
+import ru.alexgladkov.odyssey.compose.local.LocalRootController
 
 
 @Composable
@@ -52,7 +56,7 @@ fun BirdsPage(viewModel: MainScreenViewModel) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-
+        Text(text = "Main screen")
         Row(
             Modifier.fillMaxWidth().padding(5.dp),
             horizontalArrangement = Arrangement.spacedBy(5.dp)
@@ -85,6 +89,15 @@ fun BirdsPage(viewModel: MainScreenViewModel) {
                     }
                 }
             )
+        }
+        val rootController = LocalRootController.current
+        Button(
+            onClick = {
+                rootController.push("SecondScreen")
+            },
+            modifier = Modifier.wrapContentSize()
+        ) {
+            Text(text = "Следующий экран")
         }
     }
 }

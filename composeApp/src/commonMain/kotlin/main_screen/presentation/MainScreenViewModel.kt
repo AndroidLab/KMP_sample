@@ -26,7 +26,7 @@ class MainScreenViewModel: ViewModel(), KoinComponent {
 
 
     init {
-        updateImages()
+        //updateImages()
     }
 
 

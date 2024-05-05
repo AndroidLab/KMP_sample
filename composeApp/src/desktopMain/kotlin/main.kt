@@ -1,14 +1,31 @@
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
-import main_screen.presentation.MainScreen
+import androidx.compose.ui.window.rememberWindowState
+import ru.alexgladkov.odyssey.compose.setup.OdysseyConfiguration
+import ru.alexgladkov.odyssey.compose.setup.setNavigationContent
 import utils.initCoin
+import utils.navigationGraph
 
 fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
         title = "KotlinProject",
+        state = rememberWindowState(
+            width = 640.dp,
+            height = 480.dp,
+            position = WindowPosition.Aligned(Alignment.Center)
+        )
     ) {
         initCoin()
-        MainScreen()
+        val configuration = OdysseyConfiguration()
+        setNavigationContent(configuration, onApplicationFinish = {
+            exitApplication()
+        }) {
+            navigationGraph()
+        }
+
     }
 }

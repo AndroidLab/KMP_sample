@@ -3,13 +3,18 @@ package org.example.project
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import main_screen.presentation.MainScreen
+import ru.alexgladkov.odyssey.compose.setup.OdysseyConfiguration
+import ru.alexgladkov.odyssey.compose.setup.setNavigationContent
+import utils.navigationGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MainScreen()
+            val configuration = OdysseyConfiguration(canvas = this)
+            setNavigationContent(configuration) {
+                navigationGraph()
+            }
         }
     }
 }
