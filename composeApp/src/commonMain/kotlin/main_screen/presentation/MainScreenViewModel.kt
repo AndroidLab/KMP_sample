@@ -1,8 +1,8 @@
 package main_screen.presentation
 
 import de.jensklingenberg.ktorfit.Ktorfit
-import main_screen.data.MainScreenUiState
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
+import main_screen.data.MainScreenUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -55,12 +55,13 @@ kotlin {
             implementation(libs.koinCore)
             //api(libs.koinCompose)  //Что то не работает
             implementation(libs.koinCoreCoroutines)
-            implementation(libs.odyssey.core)
-            implementation(libs.odyssey.compose)
+            implementation(libs.odysseyCore)
+            implementation(libs.odysseyCompose)
+
         }
         androidMain.dependencies {
-            implementation(libs.composeUiToolingPreview)
-            implementation(libs.androidxActivityCompose)
+            implementation(libs.uiToolingPreview)
+            implementation(libs.activityCompose)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
