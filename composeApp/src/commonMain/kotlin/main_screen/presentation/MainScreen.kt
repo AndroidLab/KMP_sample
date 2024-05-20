@@ -57,6 +57,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import ru.alexgladkov.odyssey.compose.extensions.push
 import ru.alexgladkov.odyssey.compose.local.LocalRootController
 import kotlin.math.sin
+import getPlatform
 
 @OptIn(ExperimentalResourceApi::class, InternalResourceApi::class)
 @Composable

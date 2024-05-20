@@ -57,7 +57,7 @@ kotlin {
             implementation(libs.koinCoreCoroutines)
             implementation(libs.odysseyCore)
             implementation(libs.odysseyCompose)
-
+            implementation(libs.chart)
         }
         androidMain.dependencies {
             implementation(libs.uiToolingPreview)
