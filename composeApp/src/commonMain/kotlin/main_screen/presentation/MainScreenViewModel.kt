@@ -1,5 +1,7 @@
 package main_screen.presentation
 
+import CoreComponent
+import ICoreComponent
 import de.jensklingenberg.ktorfit.Ktorfit
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import main_screen.data.MainScreenUiState
@@ -20,6 +22,7 @@ import org.koin.core.component.inject
 class MainScreenViewModel: ViewModel(), KoinComponent {
 
     private val ktorfit: Ktorfit by inject()
+    val coreComponent: ICoreComponent by inject()
 
     private val _uiState = MutableStateFlow(MainScreenUiState())
     val uiState = _uiState.asStateFlow()

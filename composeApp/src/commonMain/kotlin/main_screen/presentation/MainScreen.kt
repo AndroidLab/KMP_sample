@@ -14,6 +14,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,6 +26,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coreComponent
+import dev.icerock.moko.mvvm.compose.getViewModel
+import dev.icerock.moko.mvvm.compose.viewModelFactory
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.InternalResourceApi
@@ -36,6 +40,13 @@ import ru.alexgladkov.odyssey.compose.local.LocalRootController
 @Composable
 fun MainScreen() {
     SamGMYTheme {
+        val mainScreenViewModel = getViewModel(Unit, viewModelFactory { MainScreenViewModel() })
+
+        LaunchedEffect(Unit) {
+            println("AAAAAA " + coreComponent.appPreferences.isDarkModeEnabled())
+            coreComponent.appPreferences.changeDarkMode(false)
+        }
+
         var showContent by remember { mutableStateOf(false) }
         Column(
             Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
@@ -43,7 +54,7 @@ fun MainScreen() {
             Button(
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 onClick = { showContent = !showContent }) {
-                Text("Click me!")
+                Text("Нажми на меня!")
             }
             AnimatedVisibility(showContent) {
                 Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
@@ -100,7 +111,6 @@ fun MainScreen() {
                     color = Color.Blue
                 )
             }
-
 
             Button(
                 modifier = Modifier.padding(12.dp),

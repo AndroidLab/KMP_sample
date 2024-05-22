@@ -63,10 +63,13 @@ kotlin {
             implementation(libs.coilCompose)
             implementation(libs.coil)
             implementation(libs.coilNetworkKtor)
+            implementation(libs.androidxDataStoreCore)
+
         }
         androidMain.dependencies {
             implementation(libs.uiToolingPreview)
             implementation(libs.activityCompose)
+            api(libs.androidxStartup)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

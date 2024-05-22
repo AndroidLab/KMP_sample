@@ -10,6 +10,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        ApplicationComponent.init()
         initCoin()
     }
 }

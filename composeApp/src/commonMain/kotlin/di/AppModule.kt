@@ -1,5 +1,7 @@
 package di
 
+import CoreComponent
+import ICoreComponent
 import de.jensklingenberg.ktorfit.Ktorfit
 import de.jensklingenberg.ktorfit.ktorfit
 import io.ktor.client.HttpClient
@@ -39,4 +41,7 @@ val appModule = module {
         get<Ktorfit>().create<IBirdApi>()
     }
 
+    /*single {
+        CoreComponent() as ICoreComponent
+    }*/
 }

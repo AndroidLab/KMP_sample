@@ -10,6 +10,7 @@ import utils.initCoin
 import utils.navigationGraph
 
 fun main() = application {
+    ApplicationComponent.init()
     Window(
         onCloseRequest = ::exitApplication,
         title = "KotlinProject",

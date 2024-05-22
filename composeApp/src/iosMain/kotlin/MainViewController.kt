@@ -6,6 +6,7 @@ import utils.navigationGraph
 
 fun MainViewController() = ComposeUIViewController {
     initCoin()
+    ApplicationComponent.init()
     val configuration = OdysseyConfiguration()
     setNavigationContent(configuration) {
         navigationGraph()

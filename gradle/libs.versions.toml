@@ -11,23 +11,25 @@ odysseyCore = "1.3.60"
 coil3 = "3.0.0-alpha06"
 
 [libraries]
+kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.6.0" }
+kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.8.1" }
+
+#Android
 androidxCoreKtx = { group = "androidx.core", name = "core-ktx", version = "1.13.1" }
 androidxEspresso-core = { group = "androidx.test.espresso", name = "espresso-core", version = "3.5.1" }
 androidxAppcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.6.1" }
 androidxMaterial = { group = "com.google.android.material", name = "material", version = "1.12.0" }
 androidxConstraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.1.4" }
 androidxActivityCompose = { module = "androidx.activity:activity-compose", version = "1.9.0" }
-composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version = "1.6.7" }
 composeUiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version = "1.6.7" }
 lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version = "2.8.0" }
-mvvmCompose = { module = "dev.icerock.moko:mvvm-compose", version = "0.16.1" }
-mvvmCore = { module = "dev.icerock.moko:mvvm-core", version = "0.16.1" }
-kotlinxSerializationJson = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.6.0" }
-kotlinxCoroutinesCore = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.8.1" }
+composeUiTooling = { module = "androidx.compose.ui:ui-tooling", version = "1.6.7" }
 uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version = "1.6.7" }
 activityCompose = { module = "androidx.activity:activity-compose", version = "1.9.0" }
+androidxStartup = { module = "androidx.startup:startup-runtime", version = "1.1.1" }
 
-
+#Пользовательские предпочтения
+androidxDataStoreCore = { module = "androidx.datastore:datastore-preferences-core", version = "1.1.1" }
 
 #Графики
 chart = { module = "io.github.thechance101:chart", version = "Beta-0.0.5" }
@@ -54,6 +56,8 @@ coilComposeCore = { module = "io.coil-kt.coil3:coil-compose-core", version.ref =
 coilNetworkKtor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil3" }
 
 #Остальное
+mvvmCompose = { module = "dev.icerock.moko:mvvm-compose", version = "0.16.1" }
+mvvmCore = { module = "dev.icerock.moko:mvvm-core", version = "0.16.1" }
 
 
 [plugins]
