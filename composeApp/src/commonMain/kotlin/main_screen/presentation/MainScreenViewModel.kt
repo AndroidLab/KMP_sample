@@ -1,10 +1,8 @@
 package main_screen.presentation
 
-import CoreComponent
-import ICoreComponent
+import IAppPreferences
 import de.jensklingenberg.ktorfit.Ktorfit
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
-import main_screen.data.MainScreenUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,6 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import main_screen.api.IBirdApi
+import main_screen.data.MainScreenUiState
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -22,7 +21,7 @@ import org.koin.core.component.inject
 class MainScreenViewModel: ViewModel(), KoinComponent {
 
     private val ktorfit: Ktorfit by inject()
-    val coreComponent: ICoreComponent by inject()
+    val appPreferences: IAppPreferences by inject()
 
     private val _uiState = MutableStateFlow(MainScreenUiState())
     val uiState = _uiState.asStateFlow()

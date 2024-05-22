@@ -26,7 +26,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coreComponent
 import dev.icerock.moko.mvvm.compose.getViewModel
 import dev.icerock.moko.mvvm.compose.viewModelFactory
 import org.jetbrains.compose.resources.DrawableResource
@@ -36,6 +35,7 @@ import org.jetbrains.compose.resources.painterResource
 import ru.alexgladkov.odyssey.compose.extensions.push
 import ru.alexgladkov.odyssey.compose.local.LocalRootController
 
+
 @OptIn(ExperimentalResourceApi::class, InternalResourceApi::class)
 @Composable
 fun MainScreen() {
@@ -43,8 +43,8 @@ fun MainScreen() {
         val mainScreenViewModel = getViewModel(Unit, viewModelFactory { MainScreenViewModel() })
 
         LaunchedEffect(Unit) {
-            println("AAAAAA " + coreComponent.appPreferences.isDarkModeEnabled())
-            coreComponent.appPreferences.changeDarkMode(false)
+            println("AAAAAA " + mainScreenViewModel.appPreferences.isDarkModeEnabled())
+            mainScreenViewModel.appPreferences.changeDarkMode(true)
         }
 
         var showContent by remember { mutableStateOf(false) }
