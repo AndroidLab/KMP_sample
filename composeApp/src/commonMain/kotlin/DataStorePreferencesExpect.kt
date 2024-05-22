@@ -12,7 +12,7 @@ import okio.Path.Companion.toPath
 /**
  * Возвращает название файла предпочтений.
  */
-internal const val APP_PREFERENCES_NAME = "preferences.preferences_pb"
+internal const val APP_PREFERENCES = "preferences.preferences_pb"
 
 /**
  * Ожидает реализации создания предпочтений для конкретной платформы.

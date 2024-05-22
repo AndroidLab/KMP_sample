@@ -15,5 +15,5 @@ actual fun createDataStorePreferences(
         corruptionHandler = corruptionHandler,
         migrations = migrations,
         coroutineScope = coroutineScope,
-        path = { SETTINGS_PREFERENCES }
+        path = { APP_PREFERENCES }
     )

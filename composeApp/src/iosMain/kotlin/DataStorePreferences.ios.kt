@@ -25,6 +25,6 @@ actual fun createDataStorePreferences(
             create = false,
             error = null,
         )
-        (requireNotNull(documentDirectory).path + "/$SETTINGS_PREFERENCES")
+        (requireNotNull(documentDirectory).path + "/$APP_PREFERENCES")
     }
 )

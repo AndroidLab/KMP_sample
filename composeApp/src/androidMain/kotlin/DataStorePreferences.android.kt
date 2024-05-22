@@ -17,6 +17,6 @@ actual fun createDataStorePreferences(
     migrations = migrations,
     coroutineScope = coroutineScope,
     path = {
-        File(applicationContext.filesDir, "datastore/$SETTINGS_PREFERENCES").path
+        File(applicationContext.filesDir, "datastore/$APP_PREFERENCES").path
     }
 )
