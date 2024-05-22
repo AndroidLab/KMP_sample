@@ -45,7 +45,6 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.kotlinxSerializationJson)
             implementation(libs.ktorfitLib)
-            implementation(libs.kamelImage)
             implementation(libs.ktorSerializationKotlinxJson)
             implementation(libs.ktorClientSerialization)
             implementation(libs.ktorClientContentNegotiation)
@@ -58,6 +57,12 @@ kotlin {
             implementation(libs.odysseyCore)
             implementation(libs.odysseyCompose)
             implementation(libs.chart)
+
+            implementation(libs.coil)
+            implementation(libs.coilComposeCore)
+            implementation(libs.coilCompose)
+            implementation(libs.coil)
+            implementation(libs.coilNetworkKtor)
         }
         androidMain.dependencies {
             implementation(libs.uiToolingPreview)

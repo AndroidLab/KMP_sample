@@ -14,8 +14,8 @@ fun main() = application {
         onCloseRequest = ::exitApplication,
         title = "KotlinProject",
         state = rememberWindowState(
-            width = 640.dp,
-            height = 480.dp,
+            width = 1280.dp,
+            height = 1024.dp,
             position = WindowPosition.Aligned(Alignment.Center)
         )
     ) {

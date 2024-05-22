@@ -12,7 +12,9 @@ pluginManagement {
             }
         }
         gradlePluginPortal()
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")  //TODO для подключения plot-chart
+        //maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        //maven( "https://androidx.dev/storage/compose-compiler/repository")
+        //maven("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev")
     }
 }
 
@@ -26,8 +28,9 @@ dependencyResolutionManagement {
                 includeGroupAndSubgroups("com.google")
             }
         }
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")  //TODO для подключения plot-chart
-        //maven { url = URI("https://jitpack.io") }
+        //maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+        //maven( "https://androidx.dev/storage/compose-compiler/repository")
+        //maven("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev")
     }
 }
 
