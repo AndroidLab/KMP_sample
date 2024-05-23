@@ -13,7 +13,7 @@ import org.example.project.main_screen.api.IBirdApi
 import org.example.project.main_screen.data.MainScreenUiState
 import org.example.project.main_screen.db.AppDatabase
 import org.example.project.main_screen.db.TodoDao
-import org.example.project.main_screen.db.TodoEntity
+import org.example.project.preferences.AppPreferences
 
 
 /**
@@ -21,27 +21,29 @@ import org.example.project.main_screen.db.TodoEntity
  */
 class MainScreenViewModel(
     private val ktorfit: Ktorfit,
-    private val database: AppDatabase
+    private val database: AppDatabase,
+    private val preferences: AppPreferences
 ): ViewModel() {
-    //val appPreferences: IAppPreferences by inject()
 
     private val _uiState = MutableStateFlow(MainScreenUiState())
     val uiState = _uiState.asStateFlow()
+
+    val titleText: MutableStateFlow<String> = MutableStateFlow("")
 
     private val dao: TodoDao by lazy {
         database.getDao()
     }
 
     init {
-        println("AAAAAAA init")
-        viewModelScope.launch {
-            println("AAAAAA " + dao.count())
-        }
+        println("AAAAAAA Main init")
+        /*viewModelScope.launch {
+            println("AAAAAA 1 " + preferences.isDarkModeEnabled())
+        }*/
     }
 
     override fun onCleared() {
         super.onCleared()
-        println("AAAAAAA on cleared")
+        println("AAAAAAA Main on cleared")
     }
 
     fun selectCategory(category: String) {

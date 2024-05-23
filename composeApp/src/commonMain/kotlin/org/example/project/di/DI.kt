@@ -1,6 +1,6 @@
 package org.example.project.di
 
-import org.example.project.IAppPreferences
+import org.example.project.preferences.AppPreferences
 import de.jensklingenberg.ktorfit.Ktorfit
 import de.jensklingenberg.ktorfit.ktorfit
 import io.ktor.client.HttpClient
@@ -9,6 +9,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.example.project.main_screen.api.IBirdApi
 import org.example.project.main_screen.presentation.MainScreenViewModel
+import org.example.project.second_screen.SecondScreenViewModel
 import org.koin.core.Koin
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -17,7 +18,7 @@ import org.koin.dsl.module
 
 
 /**
- * Ожидает реализацию БД для конкректной платформы.
+ * Ожидает реализацию DI для конкректной платформы.
  */
 expect fun getPlatformDIModule(): Module
 
@@ -52,14 +53,19 @@ val appModule = module {
     }
 
     single {
-        IAppPreferences()
+        AppPreferences(dataStore = get())
     }
 
-    factory {
+    single {
         MainScreenViewModel(
             ktorfit = get(),
-            database = get()
+            database = get(),
+            preferences = get()
         )
+    }
+
+    single {
+        SecondScreenViewModel()
     }
 }
 

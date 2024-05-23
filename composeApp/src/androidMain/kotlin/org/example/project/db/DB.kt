@@ -9,8 +9,8 @@ import org.example.project.main_screen.db.AppDatabase
 /**
  * Возвращает базу данных.
  */
-internal fun getDatabase(ctx: Context): AppDatabase {
-    val appContext = ctx.applicationContext
+internal fun getDatabase(context: Context): AppDatabase {
+    val appContext = context.applicationContext
     val dbFile = appContext.getDatabasePath(APP_DB)
     return Room.databaseBuilder<AppDatabase>(
         context = appContext,

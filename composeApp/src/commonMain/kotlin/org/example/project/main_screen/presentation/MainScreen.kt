@@ -12,8 +12,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -115,6 +117,14 @@ fun MainScreen(
                     color = Color.Blue
                 )
             }
+
+            val title by viewModel.titleText.collectAsState()
+            TextField(
+                value = title,
+                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                onValueChange = {
+                    viewModel.titleText.value = it
+                })
 
             Button(
                 modifier = Modifier.padding(12.dp),

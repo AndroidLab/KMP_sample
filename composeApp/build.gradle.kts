@@ -83,7 +83,6 @@ kotlin {
             implementation(libs.uiToolingPreview)
             implementation(libs.activityCompose)
             implementation(libs.koinAndroid)
-            api(libs.androidxStartup)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

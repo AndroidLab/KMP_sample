@@ -22,7 +22,9 @@ import com.aay.compose.lineChart.model.LineType
 import ru.alexgladkov.odyssey.compose.local.LocalRootController
 
 @Composable
-fun SecondScreen() {
+fun SecondScreen(
+    secondScreenViewModel: SecondScreenViewModel
+) {
     val testLineParameters: List<LineParameters> = listOf(
         LineParameters(
             label = "revenue",
