@@ -46,6 +46,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.kotlinxSerializationJson)
             implementation(libs.lifecycleViewmodel)
+            implementation(libs.kotlinxCoroutinesCore)
 
             //Пользовательские предпочтения
             implementation(libs.androidxDataStoreCore)
@@ -56,7 +57,7 @@ kotlin {
             implementation(libs.ktorSerializationKotlinxJson)
             implementation(libs.ktorClientSerialization)
             implementation(libs.ktorClientContentNegotiation)
-            implementation(libs.kotlinxCoroutinesCore)
+
             //Внедрение зависимостей
             implementation(libs.koinCore)
             //api(libs.koinCompose)  //Что то не работает
@@ -74,10 +75,6 @@ kotlin {
             implementation(libs.roomRuntime)
             implementation(libs.sqliteBundled)
             implementation(libs.sqlite)
-            //Остальное
-            //implementation(libs.mvvmCore) // only ViewModel, EventsDispatcher, Dispatchers.UI
-            //implementation(libs.mvvmCompose) // api mvvm-core, getViewModel for Compose Multiplatfrom
-
         }
         androidMain.dependencies {
             implementation(libs.uiToolingPreview)
@@ -91,14 +88,14 @@ kotlin {
 }
 
 dependencies {
-    with("de.jensklingenberg.ktorfit:ktorfit-ksp:2.0.0-beta1") {
+    with(libs.ktorfitKsp.get().toString()) {
         add("kspAndroid", this)
         add("kspIosX64", this)
         add("kspIosArm64", this)
         add("kspIosSimulatorArm64", this)
         add("kspDesktop", this)
     }
-    with("androidx.room:room-compiler:2.7.0-alpha02") {
+    with(libs.roomCompiler.get().toString()) {
         add("kspAndroid", this)
         add("kspIosSimulatorArm64", this)
         add("kspIosX64", this)

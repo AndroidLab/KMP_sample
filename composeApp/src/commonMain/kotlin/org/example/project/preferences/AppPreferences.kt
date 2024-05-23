@@ -26,6 +26,7 @@ class AppPreferences(
     companion object {
         /**
          * Возвращает название файла предпочтений.
+         * .preferences_pb - стандард для десктопа, нельзя менять, не упадет, но работать не будет.
          */
         const val APP_PREFERENCES = "app.preferences_pb"
 
@@ -53,10 +54,16 @@ class AppPreferences(
 
     private val darkModeKey = booleanPreferencesKey("$PREFS_TAG_KEY$IS_DARK_MODE_ENABLED")
 
+    /**
+     * TODO Это sample, удалить, когда будут реальные префы.
+     */
     suspend fun isDarkModeEnabled() = dataStore.data.map { preferences ->
         preferences[darkModeKey] ?: false
     }.first()
 
+    /**
+     * TODO Это sample, удалить, когда будут реальные префы.
+     */
     suspend fun changeDarkMode(isEnabled : Boolean) = dataStore.edit { preferences ->
         preferences[darkModeKey] = isEnabled
     }
