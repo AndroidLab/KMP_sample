@@ -5,10 +5,11 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.devtoolsKsp)
+    alias(libs.plugins.jensklingenbergKtorfit)
+    alias(libs.plugins.roomGradlePlugin)
     libs.plugins.pluginSerialization.get().run {
         kotlin(pluginId) version version.displayName
     }
-    alias(libs.plugins.jensklingenbergKtorfit)
 }
 
 kotlin {
@@ -36,12 +37,6 @@ kotlin {
     sourceSets {
         val desktopMain by getting
 
-        getByName("androidMain").dependsOn(commonMain.get())
-        getByName("desktopMain").dependsOn(commonMain.get())
-        getByName("iosArm64Main").dependsOn(commonMain.get())
-        getByName("iosX64Main").dependsOn(commonMain.get())
-        getByName("iosSimulatorArm64Main").dependsOn(commonMain.get())
-
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -50,31 +45,44 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.kotlinxSerializationJson)
+            implementation(libs.lifecycleViewmodel)
+
+            //Пользовательские предпочтения
+            implementation(libs.androidxDataStoreCore)
+            //Графики
+            implementation(libs.chart)
+            //Сеть
             implementation(libs.ktorfitLib)
             implementation(libs.ktorSerializationKotlinxJson)
             implementation(libs.ktorClientSerialization)
             implementation(libs.ktorClientContentNegotiation)
             implementation(libs.kotlinxCoroutinesCore)
-            implementation(libs.mvvmCore) // only ViewModel, EventsDispatcher, Dispatchers.UI
-            implementation(libs.mvvmCompose) // api mvvm-core, getViewModel for Compose Multiplatfrom
+            //Внедрение зависимостей
             implementation(libs.koinCore)
             //api(libs.koinCompose)  //Что то не работает
             implementation(libs.koinCoreCoroutines)
+            //#Навигация
             implementation(libs.odysseyCore)
             implementation(libs.odysseyCompose)
-            implementation(libs.chart)
-
+            //Загрузка изображений
             implementation(libs.coil)
             implementation(libs.coilComposeCore)
             implementation(libs.coilCompose)
             implementation(libs.coil)
             implementation(libs.coilNetworkKtor)
-            implementation(libs.androidxDataStoreCore)
+            //БД
+            implementation(libs.roomRuntime)
+            implementation(libs.sqliteBundled)
+            implementation(libs.sqlite)
+            //Остальное
+            //implementation(libs.mvvmCore) // only ViewModel, EventsDispatcher, Dispatchers.UI
+            //implementation(libs.mvvmCompose) // api mvvm-core, getViewModel for Compose Multiplatfrom
 
         }
         androidMain.dependencies {
             implementation(libs.uiToolingPreview)
             implementation(libs.activityCompose)
+            implementation(libs.koinAndroid)
             api(libs.androidxStartup)
         }
         desktopMain.dependencies {
@@ -91,6 +99,17 @@ dependencies {
         add("kspIosSimulatorArm64", this)
         add("kspDesktop", this)
     }
+    with("androidx.room:room-compiler:2.7.0-alpha02") {
+        add("kspAndroid", this)
+        add("kspIosSimulatorArm64", this)
+        add("kspIosX64", this)
+        add("kspIosArm64", this)
+        add("kspDesktop", this)
+    }
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
 
 android {

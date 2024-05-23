@@ -6,5 +6,6 @@ plugins {
     alias(libs.plugins.jetbrainsCompose) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
     alias(libs.plugins.jetbrainsKotlinJvm) apply false
-
+    alias(libs.plugins.devtoolsKsp) apply false
+    alias(libs.plugins.roomGradlePlugin).apply(false)
 }
