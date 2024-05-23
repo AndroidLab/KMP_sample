@@ -44,7 +44,7 @@ fun MainScreen() {
 
         LaunchedEffect(Unit) {
             println("AAAAAA " + mainScreenViewModel.appPreferences.isDarkModeEnabled())
-            mainScreenViewModel.appPreferences.changeDarkMode(true)
+            //mainScreenViewModel.appPreferences.changeDarkMode(true)
         }
 
         var showContent by remember { mutableStateOf(false) }

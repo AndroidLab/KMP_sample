@@ -36,6 +36,12 @@ kotlin {
     sourceSets {
         val desktopMain by getting
 
+        getByName("androidMain").dependsOn(commonMain.get())
+        getByName("desktopMain").dependsOn(commonMain.get())
+        getByName("iosArm64Main").dependsOn(commonMain.get())
+        getByName("iosX64Main").dependsOn(commonMain.get())
+        getByName("iosSimulatorArm64Main").dependsOn(commonMain.get())
+
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -124,7 +130,7 @@ android {
 compose.desktop {
     application {
         mainClass = "MainKt"
-        javaHome = System.getenv("JAVA_HOME")
+        //javaHome = System.getenv("JAVA_HOME")   //Может иногда понадобиться, если не работает на windows
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "org.example.project"
