@@ -47,7 +47,6 @@ kotlin {
             implementation(libs.kotlinxSerializationJson)
             implementation(libs.lifecycleViewmodel)
             implementation(libs.kotlinxCoroutinesCore)
-            implementation("dev.bluefalcon:blue-falcon:1.0.0")
 
             //Пользовательские предпочтения
             implementation(libs.androidxDataStoreCore)
@@ -149,6 +148,7 @@ compose.desktop {
     application {
         mainClass = "MainKt"
         //javaHome = System.getenv("JAVA_HOME")   //Может иногда понадобиться, если не работает на windows
+
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "org.example.project"

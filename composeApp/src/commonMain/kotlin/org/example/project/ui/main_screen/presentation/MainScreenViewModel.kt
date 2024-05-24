@@ -36,9 +36,9 @@ class MainScreenViewModel(
 
     init {
         println("AAAAAAA Main init")
-        /*viewModelScope.launch {
-            println("AAAAAA 1 " + preferences.isDarkModeEnabled())
-        }*/
+        viewModelScope.launch {
+            preferences.changeDarkMode(true)
+        }
     }
 
     override fun onCleared() {

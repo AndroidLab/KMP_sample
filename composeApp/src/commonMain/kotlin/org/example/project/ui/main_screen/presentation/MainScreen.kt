@@ -46,7 +46,6 @@ fun MainScreen(
     viewModel: MainScreenViewModel
 ) {
     SamGMYTheme {
-        //val mainScreenViewModel = getViewModel(Unit, viewModelFactory { MainScreenViewModel() })
 
         LaunchedEffect(Unit) {
             //println("AAAAAA " + mainScreenViewModel.appPreferences.isDarkModeEnabled())
