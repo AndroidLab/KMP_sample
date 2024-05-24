@@ -4,7 +4,13 @@ import org.example.project.preferences.AppPreferences
 import de.jensklingenberg.ktorfit.Ktorfit
 import de.jensklingenberg.ktorfit.ktorfit
 import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.engine.cio.endpoint
+import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.request.header
+import io.ktor.http.ContentType
+import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.example.project.main_screen.api.IBirdApi
@@ -28,24 +34,43 @@ expect fun getPlatformDIModule(): Module
 val appModule = module {
     single {
         ktorfit {
-                baseUrl("https://sebastianaigner.github.io/")
-                httpClient(HttpClient {
-                    // install(HttpCache)
-                    install(ContentNegotiation) {
-                        json(
-                            Json {
-                                prettyPrint = true
-                                isLenient = true
-                                ignoreUnknownKeys = true
-                            }
-                        )
+            baseUrl("https://sebastianaigner.github.io/")
+            httpClient(HttpClient(CIO) {
+                install(DefaultRequest) {
+                    //header(HttpHeaders.ContentType, ContentType.Application.Json)
+                    //header(HttpHeaders.Authorization, "Bearer ${authService.identityModel.accessToken}")
+                }
+                // install(HttpCache)
+                install(ContentNegotiation) {
+                    json(
+                        Json {
+                            prettyPrint = true
+                            isLenient = true
+                            ignoreUnknownKeys = true
+                        }
+                    )
+                }
+                engine {
+                    maxConnectionsCount = 1000
+                    endpoint {
+                        // this: EndpointConfig
+                        maxConnectionsPerRoute = 100
+                        pipelineMaxSize = 20
+                        keepAliveTime = 5000
+                        connectTimeout = 30000
+                        connectAttempts = 1
                     }
-                })
-                converterFactories(
-                    //FlowConverterFactory(),
-                    //CallConverterFactory(),
-                )
-            }
+                    /*https {
+                    // this: TLSConfigBuilder
+                    serverName = "api.ktor.io"
+                    }*/
+                }
+            })
+            converterFactories(
+                //FlowConverterFactory(),
+                //CallConverterFactory(),
+            )
+        }
     }
 
     single {

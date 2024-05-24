@@ -47,6 +47,7 @@ kotlin {
             implementation(libs.kotlinxSerializationJson)
             implementation(libs.lifecycleViewmodel)
             implementation(libs.kotlinxCoroutinesCore)
+            implementation("dev.bluefalcon:blue-falcon:1.0.0")
 
             //Пользовательские предпочтения
             implementation(libs.androidxDataStoreCore)
@@ -54,8 +55,9 @@ kotlin {
             implementation(libs.chart)
             //Сеть
             implementation(libs.ktorfitLib)
-            implementation(libs.ktorSerializationKotlinxJson)
+            implementation(libs.ktorClientCio)
             implementation(libs.ktorClientSerialization)
+            implementation(libs.ktorSerializationKotlinxJson)
             implementation(libs.ktorClientContentNegotiation)
 
             //Внедрение зависимостей
