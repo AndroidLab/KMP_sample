@@ -5,7 +5,6 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
-import org.example.project.main_screen.db.AppDatabase
 
 /**
  * Возвращает базу данных.

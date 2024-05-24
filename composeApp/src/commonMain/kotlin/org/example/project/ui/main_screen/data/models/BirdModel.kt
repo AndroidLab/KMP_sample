@@ -1,4 +1,4 @@
-package org.example.project.main_screen.data.models
+package org.example.project.ui.main_screen.data.models
 
 import kotlinx.serialization.Serializable
 

@@ -1,4 +1,4 @@
-package org.example.project.main_screen.presentation
+package org.example.project.ui.main_screen.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,10 +9,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.example.project.main_screen.api.IBirdApi
-import org.example.project.main_screen.data.MainScreenUiState
-import org.example.project.main_screen.db.AppDatabase
-import org.example.project.main_screen.db.TodoDao
+import org.example.project.ui.main_screen.api.IBirdApi
+import org.example.project.ui.main_screen.data.MainScreenUiState
+import org.example.project.db.AppDatabase
+import org.example.project.ui.main_screen.db.TodoDao
 import org.example.project.preferences.AppPreferences
 
 

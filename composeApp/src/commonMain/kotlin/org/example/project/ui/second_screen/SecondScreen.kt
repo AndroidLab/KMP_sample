@@ -1,4 +1,4 @@
-package org.example.project.second_screen
+package org.example.project.ui.second_screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

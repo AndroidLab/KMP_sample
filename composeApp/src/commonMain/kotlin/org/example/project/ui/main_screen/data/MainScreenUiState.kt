@@ -1,6 +1,6 @@
-package org.example.project.main_screen.data
+package org.example.project.ui.main_screen.data
 
-import org.example.project.main_screen.data.models.BirdModel
+import org.example.project.ui.main_screen.data.models.BirdModel
 
 /**
  * Представляет состояние главного экрана.

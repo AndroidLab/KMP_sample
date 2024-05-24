@@ -1,4 +1,4 @@
-package org.example.project.main_screen.presentation
+package org.example.project.ui.main_screen.presentation
 
 import org.example.project.getPlatform
 

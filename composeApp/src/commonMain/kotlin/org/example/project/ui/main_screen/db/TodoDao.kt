@@ -1,4 +1,4 @@
-package org.example.project.main_screen.db
+package org.example.project.ui.main_screen.db
 
 import androidx.room.Dao
 import androidx.room.Insert

@@ -1,4 +1,4 @@
-package org.example.project.main_screen.presentation
+package org.example.project.ui.main_screen.presentation
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -126,13 +126,23 @@ fun MainScreen(
                     viewModel.titleText.value = it
                 })
 
-            Button(
-                modifier = Modifier.padding(12.dp),
-                onClick = {
-                    rootController.push("SecondScreen")
+            Row {
+                Button(
+                    modifier = Modifier.padding(12.dp),
+                    onClick = {
+                        rootController.push("SecondScreen")
+                    }
+                ) {
+                    Text("К графику")
                 }
-            ) {
-                Text("К графику")
+                Button(
+                    modifier = Modifier.padding(12.dp),
+                    onClick = {
+                        rootController.push("BluetoothScreen")
+                    }
+                ) {
+                    Text("К блютузу")
+                }
             }
 
             Text(

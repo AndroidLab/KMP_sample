@@ -82,6 +82,7 @@ kotlin {
             implementation(libs.uiToolingPreview)
             implementation(libs.activityCompose)
             implementation(libs.koinAndroid)
+            //implementation("com.github.weliem:blessed-kotlin:3.0.7")
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
