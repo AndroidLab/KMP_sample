@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.resolver.buildSrcSourceRootsFilePath
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -21,7 +22,12 @@ kotlin {
         }
     }
 
-    jvm("desktop")
+    jvm("desktop") {
+
+        compilations.all {
+            kotlinOptions.jvmTarget = "17"
+        }
+    }
 
     listOf(
         iosX64(),
@@ -49,6 +55,7 @@ kotlin {
             implementation(libs.kotlinxCoroutinesCore)
 
             //Пользовательские предпочтения
+            //implementation(libs.datastoreCoreOkio)
             implementation(libs.androidxDataStoreCore)
             //Графики
             implementation(libs.chart)
@@ -84,6 +91,7 @@ kotlin {
             //implementation("com.github.weliem:blessed-kotlin:3.0.7")
         }
         desktopMain.dependencies {
+            implementation(libs.datastoreCoreOkioJvm)
             implementation(compose.desktop.currentOs)
         }
     }
@@ -151,7 +159,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "org.example.project"
+            packageName = "Patient Sample"
             packageVersion = "1.0.0"
         }
     }

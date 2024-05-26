@@ -12,7 +12,7 @@ import org.example.project.utils.navigationGraph
 fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
-        title = "KotlinProject",
+        title = "Patient",
         state = rememberWindowState(
             width = 1280.dp,
             height = 1024.dp,

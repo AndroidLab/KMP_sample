@@ -1,12 +1,19 @@
 package org.example.project.ui.main_screen.presentation
 
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import de.jensklingenberg.ktorfit.Ktorfit
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.IO
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.example.project.ui.main_screen.api.IBirdApi
@@ -35,15 +42,19 @@ class MainScreenViewModel(
     }
 
     init {
-        println("AAAAAAA Main init")
-        viewModelScope.launch {
-            preferences.changeDarkMode(true)
-        }
+
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        println("AAAAAAA Main on cleared")
+    val prefFlow = preferences.preferencesFlow.flowOn(Dispatchers.Main.immediate).map {
+        it[booleanPreferencesKey(AppPreferences.IS_DARK_MODE_ENABLED)] ?: false
+    }
+
+    fun changePref() {
+        viewModelScope.launch {
+            preferences.changeDarkMode(prefFlow.map {
+                !it
+            }.first())
+        }
     }
 
     fun selectCategory(category: String) {

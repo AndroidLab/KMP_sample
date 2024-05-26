@@ -27,6 +27,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.datastore.preferences.core.Preferences
 import coil3.compose.AsyncImage
 import org.example.project.SamGMYTheme
 import org.jetbrains.compose.resources.DrawableResource
@@ -143,7 +144,20 @@ fun MainScreen(
                     Text("К блютузу")
                 }
             }
-
+            val pref: Boolean by viewModel.prefFlow.collectAsState(false)
+            Row {
+                Button(
+                    modifier = Modifier.padding(12.dp),
+                    onClick = {
+                        viewModel.changePref()
+                    }
+                ) {
+                    Text(text = "Изменить преф")
+                }
+                Text(
+                    text = "pref = ${pref}"
+                )
+            }
             Text(
                 modifier = Modifier.fillMaxSize().padding(12.dp),
                 text = "Compose: $greeting",

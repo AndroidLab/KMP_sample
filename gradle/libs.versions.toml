@@ -32,6 +32,8 @@ lifecycleRuntimeCompose = { module = "androidx.lifecycle:lifecycle-runtime-compo
 lifecycleViewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle" }
 
 #Пользовательские предпочтения
+datastoreCoreOkio = { module = "androidx.datastore:datastore-core-okio", version = "1.1.1" }
+datastoreCoreOkioJvm = { module = "androidx.datastore:datastore-core-okio-jvm", version = "1.1.1" }
 androidxDataStoreCore = { module = "androidx.datastore:datastore-preferences-core", version = "1.1.1" }
 
 #Графики

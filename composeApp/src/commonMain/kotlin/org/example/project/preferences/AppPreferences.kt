@@ -30,15 +30,14 @@ class AppPreferences(
          */
         const val APP_PREFERENCES = "app.preferences_pb"
 
-        private const val PREFS_TAG_KEY = "AppPreferences"
-        private const val IS_DARK_MODE_ENABLED = "prefsBoolean"
+        const val IS_DARK_MODE_ENABLED = "prefsBoolean"
 
         /**
          * Создает предпочтения с настройками по умолчанию.
          */
         fun getAppDataStoreWithDefaults(
             corruptionHandler: ReplaceFileCorruptionHandler<Preferences>? = null,
-            coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
+            coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main.immediate + SupervisorJob()),
             migrations: List<DataMigration<Preferences>> = emptyList(),
             path: () -> String,
         ): DataStore<Preferences> = PreferenceDataStoreFactory
@@ -52,7 +51,12 @@ class AppPreferences(
             )
     }
 
-    private val darkModeKey = booleanPreferencesKey("$PREFS_TAG_KEY$IS_DARK_MODE_ENABLED")
+    private val darkModeKey = booleanPreferencesKey(IS_DARK_MODE_ENABLED)
+
+    /**
+     * TODO Это sample, удалить, когда будут реальные префы.
+     */
+    val preferencesFlow = dataStore.data
 
     /**
      * TODO Это sample, удалить, когда будут реальные префы.
