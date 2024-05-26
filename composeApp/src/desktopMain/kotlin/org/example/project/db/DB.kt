@@ -9,9 +9,9 @@ import java.io.File
  * Возвращает базу данных.
  */
 internal fun getDatabase(): AppDatabase {
-    val dbFile = File(System.getProperty("java.io.tmpdir"), APP_DB)
+    //val dbFile = File(System.getProperty("java.io.tmpdir"), APP_DB)  //TODO оставил, как пример получения пути к temp через System.getProperty.
     return Room.databaseBuilder<AppDatabase>(
-        name = dbFile.absolutePath,
+        name = "C:\\ProgramData\\Patient Sample\\db\\${AppDatabase.APP_DB}",   //TODO Подумать, куда указывать пути для MacOS.
     ).setDriver(BundledSQLiteDriver())
         .setQueryCoroutineContext(Dispatchers.IO).build()
 }

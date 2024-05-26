@@ -28,7 +28,7 @@ class AppPreferences(
          * Возвращает название файла предпочтений.
          * .preferences_pb - стандард для десктопа, нельзя менять, не упадет, но работать не будет.
          */
-        const val APP_PREFERENCES = "app.preferences_pb"
+        const val APP_PREF = "app.preferences_pb"
 
         const val IS_DARK_MODE_ENABLED = "prefsBoolean"
 
@@ -37,7 +37,7 @@ class AppPreferences(
          */
         fun getAppDataStoreWithDefaults(
             corruptionHandler: ReplaceFileCorruptionHandler<Preferences>? = null,
-            coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Main.immediate + SupervisorJob()),
+            coroutineScope: CoroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.IO),
             migrations: List<DataMigration<Preferences>> = emptyList(),
             path: () -> String,
         ): DataStore<Preferences> = PreferenceDataStoreFactory

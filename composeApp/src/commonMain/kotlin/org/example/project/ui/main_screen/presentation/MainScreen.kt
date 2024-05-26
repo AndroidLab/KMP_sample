@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import androidx.datastore.preferences.core.Preferences
 import coil3.compose.AsyncImage
 import org.example.project.SamGMYTheme
+import org.example.project.ui.main_screen.db.TodoEntity
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.InternalResourceApi
@@ -145,7 +146,9 @@ fun MainScreen(
                 }
             }
             val pref: Boolean by viewModel.prefFlow.collectAsState(false)
-            Row {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
                 Button(
                     modifier = Modifier.padding(12.dp),
                     onClick = {
@@ -156,6 +159,22 @@ fun MainScreen(
                 }
                 Text(
                     text = "pref = ${pref}"
+                )
+            }
+            val db: List<TodoEntity> by viewModel.dbFlow.collectAsState(emptyList())
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Button(
+                    modifier = Modifier.padding(12.dp),
+                    onClick = {
+                        viewModel.changeDB()
+                    }
+                ) {
+                    Text(text = "Изменить БД")
+                }
+                Text(
+                    text = "pref = ${db.size}"
                 )
             }
             Text(

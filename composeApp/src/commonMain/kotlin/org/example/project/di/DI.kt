@@ -32,7 +32,7 @@ expect fun getPlatformDIModule(): Module
 val appModule = module {
     single {
         ktorfit {
-            baseUrl("https://sebastianaigner.github.io/")
+            baseUrl("https://sebastianaigner.github.io/")   //TODO Поменять на рабочий путь.
             httpClient(HttpClient(CIO) {
                 install(DefaultRequest) {
                     //header(HttpHeaders.ContentType, ContentType.Application.Json)

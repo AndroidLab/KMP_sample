@@ -21,6 +21,7 @@ import org.example.project.ui.main_screen.data.MainScreenUiState
 import org.example.project.db.AppDatabase
 import org.example.project.ui.main_screen.db.TodoDao
 import org.example.project.preferences.AppPreferences
+import org.example.project.ui.main_screen.db.TodoEntity
 
 
 /**
@@ -30,7 +31,7 @@ class MainScreenViewModel(
     private val ktorfit: Ktorfit,
     private val database: AppDatabase,
     private val preferences: AppPreferences
-): ViewModel() {
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MainScreenUiState())
     val uiState = _uiState.asStateFlow()
@@ -42,7 +43,7 @@ class MainScreenViewModel(
     }
 
     init {
-
+        database.getDao()
     }
 
     val prefFlow = preferences.preferencesFlow.flowOn(Dispatchers.Main.immediate).map {
@@ -54,6 +55,21 @@ class MainScreenViewModel(
             preferences.changeDarkMode(prefFlow.map {
                 !it
             }.first())
+        }
+    }
+
+    val dbFlow = database.getDao().getAllAsFlow()
+
+    fun changeDB() {
+        viewModelScope.launch {
+            database.getDao().insert(
+                TodoEntity(
+                    title = "123",
+                    content = "dddd",
+                    date = "yyyy",
+                )
+            )
+
         }
     }
 

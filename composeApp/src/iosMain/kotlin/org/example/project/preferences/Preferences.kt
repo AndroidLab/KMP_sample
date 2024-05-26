@@ -12,6 +12,6 @@ internal fun getDataStorePreferences() = AppPreferences.getAppDataStoreWithDefau
             create = false,
             error = null,
         )
-        (requireNotNull(documentDirectory).path + "/${AppPreferences.APP_PREFERENCES}")
+        (requireNotNull(documentDirectory).path + "/${AppPreferences.APP_PREF}")
     }
 )

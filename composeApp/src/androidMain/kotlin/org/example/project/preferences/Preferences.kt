@@ -8,6 +8,6 @@ import java.io.File
  */
 internal fun getDataStorePreferences(context: Context) = AppPreferences.getAppDataStoreWithDefaults(
     path = {
-        File(context.filesDir, "datastore/${AppPreferences.APP_PREFERENCES}").path
+        File(context.filesDir, "datastore/${AppPreferences.APP_PREF}").path
     }
 )

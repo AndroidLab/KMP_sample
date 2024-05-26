@@ -1,4 +1,3 @@
-import org.gradle.kotlin.dsl.resolver.buildSrcSourceRootsFilePath
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -13,21 +12,21 @@ plugins {
     }
 }
 
+/**
+ * Возвращает используемую версию Java.
+ */
+val java17 = JavaVersion.VERSION_17
+
 kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = JavaVersion.VERSION_17.toString()
+                jvmTarget = java17.toString()
             }
         }
     }
 
-    jvm("desktop") {
-
-        compilations.all {
-            kotlinOptions.jvmTarget = "17"
-        }
-    }
+    jvm("desktop")
 
     listOf(
         iosX64(),
@@ -91,26 +90,24 @@ kotlin {
             //implementation("com.github.weliem:blessed-kotlin:3.0.7")
         }
         desktopMain.dependencies {
-            implementation(libs.datastoreCoreOkioJvm)
             implementation(compose.desktop.currentOs)
         }
     }
 }
 
 dependencies {
+    fun addLib(lib: String) {
+        add("kspAndroid", lib)
+        add("kspIosX64", lib)
+        add("kspIosArm64", lib)
+        add("kspIosSimulatorArm64", lib)
+        add("kspDesktop", lib)
+    }
     with(libs.ktorfitKsp.get().toString()) {
-        add("kspAndroid", this)
-        add("kspIosX64", this)
-        add("kspIosArm64", this)
-        add("kspIosSimulatorArm64", this)
-        add("kspDesktop", this)
+        addLib(this)
     }
     with(libs.roomCompiler.get().toString()) {
-        add("kspAndroid", this)
-        add("kspIosSimulatorArm64", this)
-        add("kspIosX64", this)
-        add("kspIosArm64", this)
-        add("kspDesktop", this)
+        addLib(this)
     }
 }
 
@@ -144,8 +141,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = java17
+        targetCompatibility = java17
     }
     dependencies {
         debugImplementation(libs.composeUiTooling)
@@ -156,11 +153,11 @@ compose.desktop {
     application {
         mainClass = "MainKt"
         //javaHome = System.getenv("JAVA_HOME")   //Может иногда понадобиться, если не работает на windows
-
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "Patient Sample"
             packageVersion = "1.0.0"
+            modules("jdk.unsupported")
         }
     }
 }
