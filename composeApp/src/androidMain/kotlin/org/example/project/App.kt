@@ -1,7 +1,7 @@
 package org.example.project
 
 import android.app.Application
-import org.example.project.di.Koin
+import org.example.project.di.AppKoin
 import org.koin.android.ext.koin.androidContext
 
 /**
@@ -11,7 +11,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Koin.setupKoin {
+        AppKoin.setupKoin {
             androidContext(applicationContext)
         }
     }

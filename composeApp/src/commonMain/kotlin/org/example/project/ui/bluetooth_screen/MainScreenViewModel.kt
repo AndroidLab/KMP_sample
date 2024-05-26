@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 
 
 /**
- * Предствавляет модель представления экрана поиска устройст.
+ * Предствавляет модель представления экрана поиска устройст. //TODO Для сэмпла.
  */
 class BluetoothScreenViewModel(): ViewModel() {
 

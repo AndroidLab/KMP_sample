@@ -6,6 +6,7 @@ import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.engine.cio.endpoint
 import io.ktor.client.plugins.DefaultRequest
+import io.ktor.client.plugins.cache.HttpCache
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
@@ -30,15 +31,19 @@ expect fun getPlatformDIModule(): Module
  * Представляет DI модуль приложения.
  */
 val appModule = module {
+    /**
+     * Возвращает экземпляр сетевого клиента.
+     */
     single {
         ktorfit {
             baseUrl("https://sebastianaigner.github.io/")   //TODO Поменять на рабочий путь.
             httpClient(HttpClient(CIO) {
                 install(DefaultRequest) {
+                    //TODO Сэмпл для замены на рабочий вариант.
                     //header(HttpHeaders.ContentType, ContentType.Application.Json)
                     //header(HttpHeaders.Authorization, "Bearer ${authService.identityModel.accessToken}")
                 }
-                // install(HttpCache)
+                install(HttpCache)
                 install(ContentNegotiation) {
                     json(
                         Json {
@@ -65,20 +70,30 @@ val appModule = module {
                 }
             })
             converterFactories(
+                //TODO Сэмпл на добавление конверторов.
                 //FlowConverterFactory(),
                 //CallConverterFactory(),
             )
         }
     }
 
+    /**
+     * TODO Сэмпл на создание реализации Api. В рабочем проекте заменить на реальный.
+     */
     single {
         get<Ktorfit>().create<IBirdApi>()
     }
 
+    /**
+     * Возвращает экземпляр пользовательских предпочтений.
+     */
     single {
         AppPreferences(dataStore = get())
     }
 
+    /**
+     * Возвращает модель представления для главного экрана.
+     */
     single {
         MainScreenViewModel(
             ktorfit = get(),
@@ -87,10 +102,16 @@ val appModule = module {
         )
     }
 
+    /**
+     * TODO Удалить или заменить на реальный.
+     */
     single {
         SecondScreenViewModel()
     }
 
+    /**
+     * TODO Удалить или заменить на реальный.
+     */
     single {
         BluetoothScreenViewModel()
     }
@@ -104,9 +125,9 @@ private fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
     }
 
 /**
- * Представляет Koin.
+ * Представляет объект [AppKoin].
  */
-object Koin {
+object AppKoin {
     private var _di: Koin? = null
 
     /**

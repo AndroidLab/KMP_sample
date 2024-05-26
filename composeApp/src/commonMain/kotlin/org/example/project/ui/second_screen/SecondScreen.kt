@@ -21,6 +21,9 @@ import com.aay.compose.lineChart.model.LineParameters
 import com.aay.compose.lineChart.model.LineType
 import ru.alexgladkov.odyssey.compose.local.LocalRootController
 
+/**
+ * TODO Для сэмпла.
+ */
 @Composable
 fun SecondScreen(
     secondScreenViewModel: SecondScreenViewModel

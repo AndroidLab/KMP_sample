@@ -5,7 +5,15 @@ import androidx.room.RoomDatabase
 import org.example.project.ui.main_screen.db.TodoDao
 import org.example.project.ui.main_screen.db.TodoEntity
 
-@Database(entities = [TodoEntity::class], version = 1)
+/**
+ * Представляет базу данных приложения.
+ */
+@Database(
+    entities = [
+        TodoEntity::class
+    ],
+    version = 1
+)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {
@@ -13,7 +21,10 @@ abstract class AppDatabase : RoomDatabase() {
          * Возвращает название файла БД.
          */
         const val APP_DB = "app.db"
+
+        const val TODO_TABLE = "todo"
     }
 
-    abstract fun getDao(): TodoDao
+    abstract val todoDao: TodoDao
+
 }

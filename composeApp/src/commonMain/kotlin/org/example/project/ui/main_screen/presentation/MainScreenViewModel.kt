@@ -38,12 +38,8 @@ class MainScreenViewModel(
 
     val titleText: MutableStateFlow<String> = MutableStateFlow("")
 
-    private val dao: TodoDao by lazy {
-        database.getDao()
-    }
 
     init {
-        database.getDao()
     }
 
     val prefFlow = preferences.preferencesFlow.flowOn(Dispatchers.Main.immediate).map {
@@ -58,11 +54,11 @@ class MainScreenViewModel(
         }
     }
 
-    val dbFlow = database.getDao().getAllAsFlow()
+    val dbFlow = database.todoDao.getAllAsFlow()
 
     fun changeDB() {
         viewModelScope.launch {
-            database.getDao().insert(
+            database.todoDao.insert(
                 TodoEntity(
                     title = "123",
                     content = "dddd",

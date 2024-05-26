@@ -5,7 +5,7 @@ import org.example.project.ui.main_screen.data.models.BirdModel
 
 
 /**
- * Описывает методы.
+ * Описывает методы. TODO Для сэмпла, удалить, когда будут реальные апи.
  */
 interface IBirdApi {
 

@@ -3,7 +3,7 @@ package org.example.project
 /**
  * Описывает свойства и методы платформы.
  */
-interface Platform {
+interface IPlatform {
     /**
      * Возвращает имя платформы.
      */
@@ -22,9 +22,14 @@ interface Platform {
         DESKTOP,
         IOS
     }
-}
 
-/**
- * Ожидает реализации конкретных платформ.
- */
-expect fun getPlatform(): Platform
+    companion object {
+        operator fun invoke(
+            name: String,
+            type: Type
+        ): IPlatform = object : IPlatform {
+            override val name = name
+            override val type = type
+        }
+    }
+}

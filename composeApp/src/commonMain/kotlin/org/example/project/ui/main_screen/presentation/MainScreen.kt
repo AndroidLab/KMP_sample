@@ -40,7 +40,7 @@ import ru.alexgladkov.odyssey.compose.extensions.push
 import ru.alexgladkov.odyssey.compose.local.LocalRootController
 
 /**
- *
+ * Представляет главный экран приложения.
  */
 @OptIn(ExperimentalResourceApi::class, InternalResourceApi::class)
 @Composable
@@ -174,7 +174,7 @@ fun MainScreen(
                     Text(text = "Изменить БД")
                 }
                 Text(
-                    text = "pref = ${db.size}"
+                    text = "БД count = ${db.size}"
                 )
             }
             Text(

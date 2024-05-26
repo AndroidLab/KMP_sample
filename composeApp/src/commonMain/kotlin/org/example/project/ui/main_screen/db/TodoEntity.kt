@@ -3,7 +3,9 @@ package org.example.project.ui.main_screen.db
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
+/**
+ * TODO Для сэмпла.
+ */
 @Entity
 data class TodoEntity(
     val title: String,

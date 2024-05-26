@@ -7,13 +7,10 @@ import kotlinx.coroutines.Dispatchers
 
 /**
  * Возвращает базу данных.
+ * @param context Контекст приложения.
  */
-internal fun getDatabase(context: Context): AppDatabase {
-    val appContext = context.applicationContext
-    val dbFile = appContext.getDatabasePath(APP_DB)
-    return Room.databaseBuilder<AppDatabase>(
-        context = appContext,
-        name = dbFile.absolutePath
-    ).setDriver(BundledSQLiteDriver())
-        .setQueryCoroutineContext(Dispatchers.IO).build()
-}
+internal fun getDatabase(context: Context) = Room.databaseBuilder<AppDatabase>(
+    context = context,
+    name = context.getDatabasePath(AppDatabase.APP_DB).absolutePath
+).setDriver(BundledSQLiteDriver())
+    .setQueryCoroutineContext(Dispatchers.IO).build()
