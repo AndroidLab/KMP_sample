@@ -82,6 +82,8 @@ kotlin {
             implementation(libs.roomRuntime)
             implementation(libs.sqliteBundled)
             implementation(libs.sqlite)
+            //Файловая система
+            implementation(libs.mpfilepicker)
         }
         androidMain.dependencies {
             implementation(libs.uiToolingPreview)

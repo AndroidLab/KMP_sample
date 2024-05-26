@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -29,6 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.datastore.preferences.core.Preferences
 import coil3.compose.AsyncImage
+import com.darkrockstudios.libraries.mpfilepicker.DirectoryPicker
+import com.darkrockstudios.libraries.mpfilepicker.FilePicker
+import com.darkrockstudios.libraries.mpfilepicker.MultipleFilePicker
 import org.example.project.SamGMYTheme
 import org.example.project.ui.main_screen.db.TodoEntity
 import org.jetbrains.compose.resources.DrawableResource
@@ -73,8 +77,10 @@ fun MainScreen(
                                 "drawable:samgmu_logo.jpg",
                                 setOf(
                                     ResourceItem(
-                                        setOf(),
-                                        "drawable/samgmu_logo.jpg"
+                                        qualifiers = setOf(),
+                                        path = "drawable/samgmu_logo.jpg",
+                                        offset = 0L,
+                                        size = 0L
                                     ),
                                 )
                             )
@@ -122,7 +128,7 @@ fun MainScreen(
             val title by viewModel.titleText.collectAsState()
             TextField(
                 value = title,
-                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                modifier = Modifier.width(300.dp).padding(vertical = 8.dp, horizontal = 12.dp),
                 onValueChange = {
                     viewModel.titleText.value = it
                 })
@@ -177,6 +183,34 @@ fun MainScreen(
                     text = "БД count = ${db.size}"
                 )
             }
+
+            val fileType = listOf("jpg", "png")
+            Row(
+                modifier = Modifier.padding(12.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                var showSingleFilePicker by remember { mutableStateOf(false) }
+                var pathSingleChosen by remember { mutableStateOf("") }
+
+                Button(onClick = {
+                    showSingleFilePicker = true
+                }) {
+                    Text("Выбрать файл")
+                }
+                Text(
+                    modifier = Modifier.padding(horizontal = 12.dp),
+                    text = "Файл: $pathSingleChosen"
+                )
+
+                FilePicker(showSingleFilePicker, fileExtensions = fileType) { platformFile ->
+                    if (platformFile != null) {
+                        pathSingleChosen = platformFile.toString()
+                    }
+                    showSingleFilePicker = false
+                }
+
+            }
+
             Text(
                 modifier = Modifier.fillMaxSize().padding(12.dp),
                 text = "Compose: $greeting",
@@ -209,9 +243,11 @@ fun KMMRow(text: String) {
                 DrawableResource(
                     "drawable:check.png",
                     setOf(
-                        org.jetbrains.compose.resources.ResourceItem(
-                            setOf(),
-                            "drawable/check.png"
+                        ResourceItem(
+                            qualifiers = setOf(),
+                            path = "drawable/check.png",
+                            offset = 0L,
+                            size = 0L
                         ),
                     )
                 )
