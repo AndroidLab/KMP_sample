@@ -7,7 +7,7 @@ import androidx.compose.ui.window.rememberWindowState
 import org.example.project.di.AppKoin
 import ru.alexgladkov.odyssey.compose.setup.OdysseyConfiguration
 import ru.alexgladkov.odyssey.compose.setup.setNavigationContent
-import org.example.project.utils.navigationGraph
+import org.example.project.navigation.navigationGraph
 
 /**
  * Представляет точку входа в desktop приложение.

@@ -1,4 +1,4 @@
-package org.example.project.ui.main_screen.presentation
+package org.example.project.ui.home_screen
 
 import org.example.project.IPlatform
 import org.example.project.di.AppKoin

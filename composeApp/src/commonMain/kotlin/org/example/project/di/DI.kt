@@ -13,8 +13,8 @@ import kotlinx.serialization.json.Json
 import org.example.project.preferences.AppPreferences
 import org.example.project.ui.bluetooth_screen.BluetoothScreenViewModel
 import org.example.project.ui.main_screen.api.IBirdApi
-import org.example.project.ui.main_screen.presentation.MainScreenViewModel
-import org.example.project.ui.second_screen.SecondScreenViewModel
+import org.example.project.ui.medicines_screen.MedicinesViewModel
+import org.example.project.ui.home_screen.HomeViewModel
 import org.koin.core.Koin
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -95,7 +95,7 @@ val appModule = module {
      * Возвращает модель представления для главного экрана.
      */
     single {
-        MainScreenViewModel(
+        HomeViewModel(
             ktorfit = get(),
             database = get(),
             preferences = get()
@@ -106,7 +106,7 @@ val appModule = module {
      * TODO Удалить или заменить на реальный.
      */
     single {
-        SecondScreenViewModel()
+        MedicinesViewModel()
     }
 
     /**

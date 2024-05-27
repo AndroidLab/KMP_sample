@@ -1,4 +1,4 @@
-package org.example.project.ui.second_screen
+package org.example.project.ui.medicines_screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,8 +25,8 @@ import ru.alexgladkov.odyssey.compose.local.LocalRootController
  * TODO Для сэмпла.
  */
 @Composable
-fun SecondScreen(
-    secondScreenViewModel: SecondScreenViewModel
+fun MedicinesScreen(
+    viewModel: MedicinesViewModel
 ) {
     val testLineParameters: List<LineParameters> = listOf(
         LineParameters(
@@ -75,7 +75,7 @@ fun SecondScreen(
             gridOrientation = GridOrientation.VERTICAL
         )
         val localRootController = LocalRootController.current
-        Row {
+        /*Row {
             Spacer(modifier = Modifier.weight(1f))
             Button(
                 onClick = {
@@ -85,6 +85,6 @@ fun SecondScreen(
             ) {
                 Text(text = "Назад")
             }
-        }
+        }*/
     }
 }
