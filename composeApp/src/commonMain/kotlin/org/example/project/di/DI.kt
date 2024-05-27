@@ -12,6 +12,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.example.project.preferences.AppPreferences
 import org.example.project.ui.bluetooth_screen.BluetoothScreenViewModel
+import org.example.project.ui.emk_screen.EmkViewModel
 import org.example.project.ui.main_screen.api.IBirdApi
 import org.example.project.ui.medicines_screen.MedicinesViewModel
 import org.example.project.ui.home_screen.HomeViewModel
@@ -107,6 +108,13 @@ val appModule = module {
      */
     single {
         MedicinesViewModel()
+    }
+
+    /**
+     * TODO Удалить или заменить на реальный.
+     */
+    single {
+        EmkViewModel(ktorfit = get())
     }
 
     /**

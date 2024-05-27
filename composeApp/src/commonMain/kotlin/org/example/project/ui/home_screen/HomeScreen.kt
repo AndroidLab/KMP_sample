@@ -3,6 +3,10 @@ package org.example.project.ui.home_screen
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
+import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,6 +26,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,6 +44,7 @@ import kotlinproject.composeapp.generated.resources.journal
 import kotlinproject.composeapp.generated.resources.measurements
 import kotlinproject.composeapp.generated.resources.medicines
 import kotlinproject.composeapp.generated.resources.samgmu_logo
+import kotlinx.coroutines.launch
 import org.example.project.SamGMYTheme
 import org.example.project.ui.main_screen.db.TodoEntity
 import org.jetbrains.compose.resources.DrawableResource
@@ -65,8 +71,17 @@ fun HomeScreen(
         }
 
         var showContent by remember { mutableStateOf(false) }
+        val scrollState = rememberScrollState()
+        val coroutineScope = rememberCoroutineScope()
         Column(
-            Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
+            Modifier.fillMaxSize().verticalScroll(scrollState).draggable(
+                orientation = Orientation.Vertical,
+                state = rememberDraggableState { delta ->
+                    coroutineScope.launch {
+                        scrollState.scrollBy(-delta)
+                    }
+                },
+            ),
         ) {
             Button(
                 modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -95,7 +110,6 @@ fun HomeScreen(
             KMMRow("Compose multiplathorm для ios использует skia, а для android нативную отрисовку (Лучше UX)")
             KMMRow("IOS разработчикам проще перейти в multiplatform, поскольку swift похож на котлин, а swiftUi на сщьзщыу")
             KMMRow("Удешевляет разработку, поскольку разработчиков знающих kotlin намного больше, чем знающих dart. + легче втянуть IOS разработчиков, поскольку языки и ui фреймворки похожи")
-            val rootController = LocalRootController.current
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -255,68 +269,3 @@ fun KMMRow(text: String) {
         )
     }
 }
-
-/*@Composable
-fun BirdsPage(viewModel: MainScreenViewModel) {
-    val uiState by viewModel.uiState.collectAsState()
-    Column(
-        Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(text = "Main screen")
-        Row(
-            Modifier.fillMaxWidth().padding(5.dp),
-            horizontalArrangement = Arrangement.spacedBy(5.dp)
-        ) {
-            for (category in uiState.categories) {
-                Button(
-                    onClick = {
-                        viewModel.selectCategory(category)
-                    },
-                    modifier = Modifier.aspectRatio(1.0f).fillMaxSize().weight(1.0f),
-                    elevation = ButtonDefaults.elevation(
-                        defaultElevation = 0.dp,
-                        focusedElevation = 0.dp
-                    )
-                )
-                {
-                    Text(category)
-                }
-            }
-        }
-        AnimatedVisibility(uiState.selectedImages.isNotEmpty()) {
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                horizontalArrangement = Arrangement.spacedBy(5.dp),
-                verticalArrangement = Arrangement.spacedBy(5.dp),
-                modifier = Modifier.fillMaxSize().padding(horizontal = 5.dp),
-                content = {
-                    items(uiState.selectedImages) {
-                        BirdImageCell(it)
-                    }
-                }
-            )
-        }
-        val rootController = LocalRootController.current
-        Button(
-            onClick = {
-                rootController.push("SecondScreen")
-            },
-            modifier = Modifier.wrapContentSize()
-        ) {
-            Text(text = "Следующий экран")
-        }
-    }
-}*/
-
-/*
-@Composable
-fun BirdImageCell(image: BirdModel) {
-    KamelImage(
-        asyncPainterResource("https://sebastianaigner.github.io/demo-image-api/${image.path}"),
-        "${image.category} by ${image.author}",
-        contentScale = ContentScale.Crop,
-        modifier = Modifier.fillMaxWidth().aspectRatio(1.0f)
-    )
-}*/

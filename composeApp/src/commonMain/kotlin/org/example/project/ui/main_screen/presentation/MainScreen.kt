@@ -9,29 +9,7 @@ import org.example.project.SamGMYTheme
 @Composable
 fun MainScreen() {
     SamGMYTheme {
-        /*BottomNavigation(
-            backgroundColor = Color.White
-        ) {
-            val rootController = LocalRootController.current
-            Constants.BottomNavItems.forEach { bottomNavItem ->
-                BottomNavigationItem(
-                    selected = bottomNavItem.id == 1,
-                    onClick = {
-                        rootController.push("SecondScreen")
-                    },
-                    icon = {
-                        Icon(
-                            imageVector = vectorResource(bottomNavItem.drawableResource),
-                            contentDescription = bottomNavItem.label
-                        )
-                    },
-                    label = {
-                        Text(text = bottomNavItem.label)
-                    },
-                    alwaysShowLabel = false
-                )
-            }
-        }*/
+
     }
 }
 

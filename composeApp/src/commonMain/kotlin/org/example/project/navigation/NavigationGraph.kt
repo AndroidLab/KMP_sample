@@ -46,7 +46,7 @@ fun RootComposeBuilder.navigationGraph() {
 }
 
 private fun RootComposeBuilder.mainScreen() {
-    bottomNavigation(name = "TestScreen", tabsNavModel = BottomConfiguration()) {
+    bottomNavigation(name = "HomeScreen", tabsNavModel = BottomConfiguration()) {
         tab(
             tabItem = HomeScreenTab()
         ) {
@@ -82,7 +82,7 @@ private fun RootComposeBuilder.mainScreen() {
             tabItem = EmkScreenTab()
         ) {
             screen(name = EmkScreenTab.ROUTE) {
-                EmkScreen()
+                EmkScreen(AppKoin.di.get())
             }
         }
     }
