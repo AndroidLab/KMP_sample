@@ -12,10 +12,16 @@ import kotlinproject.composeapp.generated.resources.journal
 import kotlinproject.composeapp.generated.resources.measurements
 import kotlinproject.composeapp.generated.resources.medicines
 import org.example.project.di.AppKoin
+import org.example.project.ui.bluetooth_screen.BluetoothScreen
+import org.example.project.ui.emk_screen.EmkScreen
 import org.example.project.ui.home_screen.HomeScreen
+import org.example.project.ui.journal_screen.JournalScreen
+import org.example.project.ui.journal_screen.JournalScreen_2
+import org.example.project.ui.measurements_screen.MeasurementsScreen
 import org.example.project.ui.medicines_screen.MedicinesScreen
 import org.jetbrains.compose.resources.painterResource
 import ru.alexgladkov.odyssey.compose.extensions.bottomNavigation
+import ru.alexgladkov.odyssey.compose.extensions.flow
 import ru.alexgladkov.odyssey.compose.extensions.screen
 import ru.alexgladkov.odyssey.compose.extensions.tab
 import ru.alexgladkov.odyssey.compose.navigation.RootComposeBuilder
@@ -30,9 +36,13 @@ import ru.alexgladkov.odyssey.compose.navigation.bottom_bar_navigation.TabsNavMo
 fun RootComposeBuilder.navigationGraph() {
     //screen("TestScreen") { TestScreen(AppKoin.di.get()) }
     //screen("SecondScreen") { SecondScreen(AppKoin.di.get()) }
-    //screen("BluetoothScreen") { BluetoothScreen(AppKoin.di.get()) }
+
+    /*flow("MainScreen") {
+
+    }*/
 
     mainScreen()
+    screen("BluetoothScreen") { BluetoothScreen(AppKoin.di.get()) }
 }
 
 private fun RootComposeBuilder.mainScreen() {
@@ -55,21 +65,24 @@ private fun RootComposeBuilder.mainScreen() {
             tabItem = JournalScreenTab()
         ) {
             screen(name = JournalScreenTab.ROUTE) {
-                MedicinesScreen(AppKoin.di.get())
+                JournalScreen()
+            }
+            screen(name = "JournalScreen_2") {
+                JournalScreen_2()
             }
         }
         tab(
             tabItem = MeasurementsScreenTab()
         ) {
             screen(name = MeasurementsScreenTab.ROUTE) {
-                MedicinesScreen(AppKoin.di.get())
+                MeasurementsScreen()
             }
         }
         tab(
             tabItem = EmkScreenTab()
         ) {
             screen(name = EmkScreenTab.ROUTE) {
-                MedicinesScreen(AppKoin.di.get())
+                EmkScreen()
             }
         }
     }

@@ -46,6 +46,7 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.InternalResourceApi
 import org.jetbrains.compose.resources.ResourceItem
 import org.jetbrains.compose.resources.painterResource
+import ru.alexgladkov.odyssey.compose.extensions.present
 import ru.alexgladkov.odyssey.compose.extensions.push
 import ru.alexgladkov.odyssey.compose.local.LocalRootController
 
@@ -158,7 +159,7 @@ fun HomeScreen(
                 Button(
                     modifier = Modifier.padding(12.dp),
                     onClick = {
-                        rootController.push("BluetoothScreen")
+                        rootController.findRootController().push("BluetoothScreen")
                     }
                 ) {
                     Text("К блютузу")
@@ -240,48 +241,6 @@ fun HomeScreen(
         }
     }*/
 }
-
-object Constants {
-    val BottomNavItems = listOf(
-        BottomNavItem(
-            id = 1,
-            label = "Главная",
-            drawableResource = Res.drawable.home,
-            route = "home"
-        ),
-        BottomNavItem(
-            id = 2,
-            label = "Лекарства",
-            drawableResource = Res.drawable.medicines,
-            route = "search"
-        ),
-        BottomNavItem(
-            id = 3,
-            label = "Дневник",
-            drawableResource = Res.drawable.journal,
-            route = "profile"
-        ),
-        BottomNavItem(
-            id = 4,
-            label = "Измерения",
-            drawableResource = Res.drawable.measurements,
-            route = "profile"
-        ),
-        BottomNavItem(
-            id = 5,
-            label = "ЭМК",
-            drawableResource = Res.drawable.emk,
-            route = "profile"
-        ),
-    )
-}
-
-data class BottomNavItem(
-    val id: Int,
-    val label: String,
-    val drawableResource: DrawableResource,
-    val route:String,
-)
 
 @OptIn(ExperimentalResourceApi::class, InternalResourceApi::class)
 @Composable
