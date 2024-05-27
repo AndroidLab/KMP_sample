@@ -147,24 +147,6 @@ fun HomeScreen(
                 shape = RoundedCornerShape(8.dp)
             )
 
-            Row {
-                Button(
-                    modifier = Modifier.padding(12.dp),
-                    onClick = {
-                        rootController.push("SecondScreen")
-                    }
-                ) {
-                    Text("К графику")
-                }
-                Button(
-                    modifier = Modifier.padding(12.dp),
-                    onClick = {
-                        rootController.findRootController().push("BluetoothScreen")
-                    }
-                ) {
-                    Text("К блютузу")
-                }
-            }
             val pref: Boolean by viewModel.prefFlow.collectAsState(false)
             Row(
                 verticalAlignment = Alignment.CenterVertically
